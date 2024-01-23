@@ -35,17 +35,16 @@
                 let product = products[i];
                 productsHTML = productsHTML +
                     `<div class="product-card">
-            <img class="product-img" src="${product.imageUrl}" />
-                </ >
-            <div class="product-contents">
-                <span class="product-name">${product.name}</span>
-                <span class="product-price">${product.price}</span>
-                <div class="product-seller">
-                    <img class="product-avatar" src="images/icons/avatar.png" />
-                    <span>그랩</span>
-                </div>
-            </div>
-            </div >` ;
+                        <img class="product-img" src="${product.imageUrl}" />
+                        <div class="product-contents">
+                            <span class="product-name">${product.name}</span>
+                            <span class="product-price">${product.price}</span>
+                            <div class="product-seller">
+                                <img class="product-avatar" src="images/icons/avatar.png" />
+                                <span>그랩</span>
+                            </div>
+                        </div>
+                    </div >`;
             }
 
             document.getElementById("product-list").innerHTML = productsHTML;
