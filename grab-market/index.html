@@ -17,19 +17,7 @@
         </div>
         <h1>판매되는 상품들</h1>
         <div id="product-list">
-            <div class="product-card">
-                <div>
-                    <img class="product-img" src="images/products/basketball1.jpeg" />
-                </div>
-                <div class="product-contents">
-                    <span class="product-name">농구공 1호</span>
-                    <span class="product-price">50000원</span>
-                    <div class="product-seller">
-                        <img class="product-avatar" src="images/icons/avatar.png" />
-                        <span>그랩</span>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <div id="footer"></div>
@@ -39,20 +27,39 @@
         name: '농구공',
         price: 100000,
         seller: '조던',
-        imageUrl: '/images/products/basketball1.jpeg',
+        imageUrl: 'images/products/basketball1.jpeg',
     },
     {
         name: '축구공',
         price: 50000,
         seller: '메시',
-        imageUrl: '/images/products/soccerball1.jpeg',
+        imageUrl: 'images/products/soccerball1.jpeg',
     }, {
         name: '키보드',
         price: 10000,
         seller: '그랩',
-        imageUrl: '/images/products/keyboard1.jpeg',
+        imageUrl: 'images/products/keyboard1.jpeg',
     }];
-    document.getElementById("product-list").innerHTML = "<p>안녕</p>"
+
+    let productsHTML = '';
+
+    for (var i = 0; i < products.length; i++) {
+        let product = products[i];
+        productsHTML = productsHTML +
+            '<div class="product-card">' +
+            '<img class="product-img" src="' + product.imageUrl + '" />' +
+            '<div class="product-contents">' +
+            '<span class="product-name">' + product.name + '</span>' +
+            '<span class="product-price"' + product.price + '</span>' +
+            '<div class="product-seller">' +
+            '<img class="product-avatar" src="images/icons/avatar.png" />' +
+            '<span>그랩</span>' +
+            '</div>' +
+            '</div>' +
+            '</div >';
+    }
+
+    document.getElementById("product-list").innerHTML = productsHTML;
 </script>
 
 </html>
