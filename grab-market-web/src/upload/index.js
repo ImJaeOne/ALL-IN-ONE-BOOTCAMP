@@ -10,7 +10,7 @@ function UploadPage() {
             <Form name="상품 업로드" onFinish={onSubmit}>
                 <Form.Item name="upload" label={<div className="upload-label">상품 사진</div>}>
                     <div id="upload-img-placeholder">
-                        <img src="/images/icons/camera.png" />
+                        <img src="/images/icons/camera.png" alt="upload" />
                         <span>이미지를 업로드해주세요.</span>
                     </div>
                 </Form.Item>

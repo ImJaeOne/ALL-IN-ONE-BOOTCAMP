@@ -23,10 +23,10 @@ function ProductPage() {
     return (
         <div>
             <div id="image-box">
-                <img src={'/' + product.imageUrl} />
+                <img src={'/' + product.imageUrl} alt="product-img" />
             </div>
             <div id="profile-box">
-                <img src="/images/icons/avatar.png" />
+                <img src="/images/icons/avatar.png" alt="avatar" />
                 <span>{product.seller}</span>
             </div>
             <div id="contents-box">
