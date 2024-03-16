@@ -5,6 +5,10 @@ import './index.css';
 
 function ProductPage() {
     const { id } = useParams();
+    // const params = useParams();
+    // console.log('params : ', params);
+    // const id = params.id;
+    // console.log('a :', id);
     const [product, setProduct] = useState(null);
     useEffect(function () {
         axios

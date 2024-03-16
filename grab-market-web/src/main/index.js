@@ -3,7 +3,7 @@ import './index.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function MainPage() {
+function MainPageComponent() {
     const [products, setProducts] = React.useState([]);
     React.useEffect(function () {
         axios
@@ -48,4 +48,4 @@ function MainPage() {
     );
 }
 
-export default MainPage;
+export default MainPageComponent;

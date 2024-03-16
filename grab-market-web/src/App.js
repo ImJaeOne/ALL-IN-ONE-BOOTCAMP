@@ -2,8 +2,8 @@ import 'antd/dist/antd.css';
 import './App.css';
 import MainPageComponent from './main';
 import { Switch, Route, Link, useHistory } from 'react-router-dom';
-import UploadPage from './upload';
-import ProductPage from './product';
+import UploadPageComponent from './upload';
+import ProductPageComponent from './product';
 import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
@@ -33,10 +33,10 @@ function App() {
                         <MainPageComponent />
                     </Route>
                     <Route exact={true} path="/products/:id">
-                        <ProductPage />
+                        <ProductPageComponent />
                     </Route>
                     <Route exact={true} path="/upload">
-                        <UploadPage />
+                        <UploadPageComponent />
                     </Route>
                 </Switch>
             </div>
