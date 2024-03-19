@@ -7,7 +7,7 @@ function MainPageComponent() {
     const [products, setProducts] = React.useState([]);
     React.useEffect(function () {
         axios
-            .get('https://09461fd1-2e72-4648-aeac-5e21a39244a8.mock.pstmn.io/products')
+            .get('http://localhost:3004/products')
             .then(function (result) {
                 const products = result.data.products;
                 setProducts(products);
