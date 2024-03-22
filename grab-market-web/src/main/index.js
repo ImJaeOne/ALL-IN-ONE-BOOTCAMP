@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import realtiveTime from 'dayjs/plugin/relativeTime';
+import { API_URL } from '../config/constants.js';
 
 dayjs.extend(realtiveTime);
 
@@ -11,7 +12,7 @@ function MainPageComponent() {
     const [products, setProducts] = React.useState([]);
     React.useEffect(function () {
         axios
-            .get('http://localhost:3004/products')
+            .get(`${API_URL}/products`)
             .then(function (result) {
                 const products = result.data.products;
                 setProducts(products);
@@ -26,14 +27,14 @@ function MainPageComponent() {
             <div id="banner">
                 <img src="images/banners/banner1.png" />
             </div>
-            <h1>판매되는 상품들</h1>
+            <h1 id="product-headline">판매되는 상품들</h1>
             <div id="product-list">
                 {products.map(function (product, index) {
                     return (
                         <div className="product-card">
                             <Link className="product-link" to={`/products/${product.id}`}>
                                 <div>
-                                    <img className="product-img" src={product.imageUrl} />
+                                    <img className="product-img" src={`${API_URL}/${product.imageUrl}`} />
                                 </div>
                                 <div className="product-contents">
                                     <span className="product-name">{product.name}</span>

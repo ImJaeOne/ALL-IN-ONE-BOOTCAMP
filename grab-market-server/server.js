@@ -17,6 +17,7 @@ const port = 3004;
 
 app.use(express.json());
 app.use(cors());
+app.use('/uploads', express.static('uploads'));
 
 app.get('/products', (req, res) => {
     models.Product.findAll({
@@ -28,21 +29,22 @@ app.get('/products', (req, res) => {
         })
         .catch((error) => {
             console.error(error);
-            res.send('상품 정보를 불러오지 못했습니다.');
+            res.status(400).send('상품 정보를 불러오지 못했습니다.');
         });
 });
 
 app.post('/products', (req, res) => {
     const body = req.body;
-    const { name, price, seller, description } = body;
-    if (!name || !price || !seller || !description) {
-        res.send('모든 필드를 입력해주세요.');
+    const { name, price, seller, description, imageUrl } = body;
+    if (!name || !price || !seller || !description || !imageUrl) {
+        res.status(400).send('모든 필드를 입력해주세요.');
     }
     models.Product.create({
         name,
         price,
         seller,
         description,
+        imageUrl,
     })
         .then((result) => {
             console.log('상품 생성 결과 : ', result);
@@ -50,7 +52,7 @@ app.post('/products', (req, res) => {
         })
         .catch((error) => {
             console.error(error);
-            res.send('상품 업로드에 문제가 발생했습니다.');
+            res.status(400).send('상품 업로드에 문제가 발생했습니다.');
         });
 });
 
@@ -68,7 +70,7 @@ app.get('/products/:id', (req, res) => {
         })
         .catch((error) => {
             console.log(error);
-            res.send('상품 조회에 오류가 발생하였습니다.');
+            res.status(400).send('상품 조회에 오류가 발생하였습니다.');
         });
 });
 
