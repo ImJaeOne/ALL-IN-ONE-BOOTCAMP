@@ -12,9 +12,9 @@ function ProductPage() {
     const [product, setProduct] = useState(null);
     useEffect(function () {
         axios
-            .get(`https://09461fd1-2e72-4648-aeac-5e21a39244a8.mock.pstmn.io/products/${id}`)
+            .get(`http://localhost:3004/products/${id}`)
             .then(function (result) {
-                setProduct(result.data);
+                setProduct(result.data.product);
             })
             .catch(function (error) {
                 console.log(error);
@@ -36,7 +36,7 @@ function ProductPage() {
             <div id="contents-box">
                 <div id="name">{product.name}</div>
                 <div id="price">{product.price}원</div>
-                <div id="createdAt">2024/01/25</div>
+                <div id="createdAt">{product.createdAt}</div>
                 <div id="description">{product.description}</div>
             </div>
         </div>

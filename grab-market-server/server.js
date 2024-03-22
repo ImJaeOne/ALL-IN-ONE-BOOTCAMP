@@ -2,6 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const models = require('./models');
+const multer = require('multer');
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'uploads');
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.originalname);
+        },
+    }),
+});
 const port = 3004;
 
 app.use(express.json());
@@ -10,7 +21,7 @@ app.use(cors());
 app.get('/products', (req, res) => {
     models.Product.findAll({
         order: [['createdAt', 'DESC']],
-        attributes: ['id', 'name', 'price', 'createdAt', 'seller'],
+        attributes: ['id', 'name', 'price', 'createdAt', 'seller', 'imageUrl'],
     })
         .then((result) => {
             res.send({ products: result });
@@ -59,6 +70,14 @@ app.get('/products/:id', (req, res) => {
             console.log(error);
             res.send('상품 조회에 오류가 발생하였습니다.');
         });
+});
+
+app.post('/image', upload.single('image'), (req, res) => {
+    const file = req.file;
+    console.log(file);
+    res.send({
+        imageUrl: file.path,
+    });
 });
 
 app.listen(port, () => {
